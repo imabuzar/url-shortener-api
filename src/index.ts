@@ -2,8 +2,9 @@ import express from 'express';
 import urlRoutes from './routes/url.routes.js';
 import { rootHandler } from './controllers/root.controller.js';
 import { redirectToOriginalUrl } from './controllers/redirect.controller.js';
-import mongoose from 'mongoose';
 import { handleNotFound } from './middlewares/notFound.middleware.js';
+import mongoose from 'mongoose';
+import cors from 'cors';
 
 const app = express();
 const PORT = (process.env.PORT || 3000) as number;
@@ -16,6 +17,7 @@ mongoose
   .catch((err) => console.log('MongoDB connection error!', err));
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
