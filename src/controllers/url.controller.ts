@@ -19,7 +19,13 @@ export const createShortUrl = async (req: Request, res: Response) => {
     return res.status(201).json({
       success: true,
       message: 'Short URL created successfully',
-      data: { shortCode, originalUrl: saved.originalUrl, shortUrl, clicks: saved.clicks },
+      data: {
+        shortCode,
+        originalUrl: saved.originalUrl,
+        shortUrl,
+        clicks: saved.clicks,
+        createdAt: saved.createdAt,
+      },
     });
   } catch (err) {
     return res.status(500).json({
@@ -54,6 +60,7 @@ export const getShortUrl = async (req: Request, res: Response) => {
         originalUrl: foundUrl.originalUrl,
         shortUrl: shortUrl,
         clicks: foundUrl.clicks,
+        createdAt: foundUrl.createdAt,
       },
     });
   } catch (err) {
