@@ -48,6 +48,7 @@ export const getShortUrl = async (req: Request, res: Response) => {
 
     return res.status(200).json({
       success: true,
+      message: 'URl data found successfully',
       data: {
         shortCode: foundUrl.shortCode,
         originalUrl: foundUrl.originalUrl,
